@@ -64,6 +64,8 @@ namespace Labb2_Threads
         {
             
             int randomNumber = random.Next(1, 51);
+            string problem = "";
+
             if (randomNumber == 1)
             {
                 Console.WriteLine($"{Name} has no fuel and needs to refill"); 
@@ -88,6 +90,15 @@ namespace Labb2_Threads
                 ActualSpeed -= 10;
                 return "Engine problem";
             }
+
+            if (!string.IsNullOrEmpty(problem) && !ProblemsEncountered.Contains(problem))
+            {
+                Console.WriteLine($"{Name} has encountered {problem}");
+                ProblemsEncountered.Add(problem);
+
+                return problem;
+            }
+
             else
             {
                 return ""; 
